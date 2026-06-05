@@ -3,17 +3,17 @@ const SheetsConnector = {
 
   async send(data) {
     try {
+      const formData = new URLSearchParams();
+
+      formData.append("name", data.name || "");
+      formData.append("email", data.email || "");
+      formData.append("phone", data.phone || "");
+      formData.append("timestamp", new Date().toISOString());
+
       await fetch(this.ENDPOINT, {
         method: "POST",
-        headers: {
-          "Content-Type": "application/json"
-        },
-        body: JSON.stringify({
-          name: data.name,
-          email: data.email,
-          phone: data.phone,
-          timestamp: new Date().toISOString()
-        })
+        mode: "no-cors",
+        body: formData
       });
 
       console.log("✅ Sent to Sheets");
