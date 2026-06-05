@@ -195,3 +195,170 @@
   break-inside: avoid;
   page-break-inside: avoid;
 }
+#resume-output {
+  width: 100%;
+  max-width: 794px;      /* A4 limit on desktop */
+  margin: 0 auto;
+  background: white;
+  box-sizing: border-box;
+  overflow: hidden;
+  padding: 12px;
+}
+
+/* Global safety */
+#resume-output * {
+  box-sizing: border-box;
+  max-width: 100%;
+  min-width: 0;
+}
+
+/* TABLE FIX */
+#resume-output table {
+  width: 100%;
+  table-layout: fixed;
+  border-collapse: collapse;
+}
+
+/* MOBILE SCROLL TABLE (IMPORTANT UPGRADE) */
+@media (max-width: 600px) {
+  #resume-output table {
+    display: block;
+    overflow-x: auto;
+    white-space: nowrap;
+  }
+}
+
+/* TEXT SAFETY */
+#resume-output td,
+#resume-output th {
+  word-break: break-word;
+  overflow-wrap: break-word;
+  font-size: 12px;
+}
+
+/* IMAGE SAFETY */
+#resume-output img {
+  max-width: 100%;
+  height: auto;
+}
+
+/* MOBILE TUNING */
+@media (max-width: 600px) {
+  #resume-output {
+    padding: 8px;
+  }
+
+  #resume-output td,
+  #resume-output th {
+    font-size: 11px;
+  }
+}
+
+/* PRINT / PDF MODE (LOCK A4) */
+@media print {
+  #resume-output {
+    width: 794px;
+    max-width: 794px;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+  }
+
+  body {
+    margin: 0;
+  }
+}
+/* ================================
+   MAIN RESUME CONTAINER
+================================ */
+#resume-output {
+  width: 794px;              /* A4 width (96 DPI) */
+  max-width: 794px;
+  margin: 0 auto;
+  background: white;
+  box-sizing: border-box;
+  overflow: hidden;
+
+  /* force text wrapping */
+  overflow-wrap: anywhere;
+  word-break: break-word;
+}
+
+/* Apply box-sizing globally inside resume */
+#resume-output * {
+  box-sizing: border-box;
+}
+
+/* ================================
+   PERSONAL DETAILS / CONTACT
+   (fix email + phone merging)
+================================ */
+#resume-output .personal-details,
+#resume-output .contact,
+#resume-output .info {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+/* Force each item to break into new line */
+#resume-output .personal-details div {
+  display: block;
+  width: 100%;
+  margin-bottom: 4px;
+}
+
+/* Ensure text always wraps properly */
+#resume-output a,
+#resume-output p,
+#resume-output span {
+  overflow-wrap: anywhere;
+  word-break: break-word;
+}
+
+/* ================================
+   LABEL / VALUE STRUCTURE
+================================ */
+#resume-output .label {
+  font-weight: 600;
+  display: block;
+}
+
+#resume-output .value {
+  display: block;
+  margin-bottom: 6px;
+}
+
+/* ================================
+   TABLE HANDLING (A4 SAFE SCROLL)
+================================ */
+#resume-output table {
+  display: block;
+  width: 100%;
+  max-width: 100%;
+  overflow-x: auto;
+  white-space: nowrap;
+  border-collapse: collapse;
+}
+
+/* Keep table readable inside scroll */
+#resume-output td,
+#resume-output th {
+  padding: 6px;
+  word-break: break-word;
+  white-space: normal;
+  font-size: 10px;
+}
+
+/* ================================
+   EXTRA SAFETY (LONG TEXT)
+================================ */
+#resume-output * {
+  min-width: 0;
+}
+
+/* Prevent flex overflow issues */
+#resume-output div,
+#resume-output section {
+  min-width: 0;
+}
