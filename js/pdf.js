@@ -15,6 +15,22 @@ const PDFExporter = {
       zIndex:     "-1",
     });
     const clone = el.cloneNode(true);
+    clone.style.width = "794px";
+clone.style.overflow = "hidden";
+clone.style.boxSizing = "border-box";
+clone.querySelectorAll("table").forEach(table => {
+  table.style.width = "100%";
+  table.style.tableLayout = "fixed";
+});
+
+clone.querySelectorAll("td, th").forEach(cell => {
+  cell.style.wordBreak = "break-word";
+  cell.style.fontSize = "10px";
+  cell.style.padding = "4px";
+});
+clone.querySelectorAll("*").forEach(el => {
+  el.style.maxWidth = "100%";
+});
     clone.style.width  = A4_PX + "px";
     clone.style.margin = "0";
     printWrap.appendChild(clone);
