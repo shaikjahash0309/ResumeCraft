@@ -1,0 +1,304 @@
+/* steps.css */
+
+/* ── Step Container ──────────────────────────── */
+.step-wrap {
+  animation: stepIn 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.step-header {
+  margin-bottom: 2.25rem;
+}
+
+.step-eyebrow {
+  font-size: 0.68rem;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--gold);
+  margin-bottom: 0.6rem;
+}
+
+.step-title {
+  font-family: var(--font-display);
+  font-size: 2rem;
+  font-weight: 700;
+  color: var(--text);
+  line-height: 1.15;
+  margin-bottom: 0.5rem;
+}
+
+.step-sub {
+  color: var(--text-2);
+  font-size: 0.875rem;
+  font-weight: 300;
+}
+
+/* ── Card Grid (Role Selection) ──────────────── */
+.role-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+  gap: 0.75rem;
+}
+
+.role-card {
+  position: relative;
+  background: var(--ink-3);
+  border: 1.5px solid var(--border);
+  border-radius: var(--r-lg);
+  padding: 1.5rem 1rem;
+  cursor: pointer;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.6rem;
+  text-align: center;
+  transition: all 0.2s;
+  user-select: none;
+}
+
+.role-card:hover {
+  border-color: var(--gold);
+  background: var(--ink-4);
+  transform: translateY(-3px);
+  box-shadow: 0 12px 36px rgba(0,0,0,0.4);
+}
+
+.role-card.selected {
+  border-color: var(--gold);
+  background: var(--gold-dim);
+}
+
+.role-card.selected::after {
+  content: '✓';
+  position: absolute;
+  top: 10px; right: 12px;
+  font-size: 0.65rem;
+  color: var(--gold);
+  font-weight: 700;
+  background: var(--gold-dim);
+  border: 1px solid var(--gold);
+  width: 18px; height: 18px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  line-height: 18px;
+  text-align: center;
+}
+
+.role-icon { font-size: 2rem; }
+
+.role-label {
+  font-size: 0.82rem;
+  font-weight: 600;
+  color: var(--text);
+}
+
+/* ── Two-column grid ─────────────────────────── */
+.two-col { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
+.three-col { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 0.75rem; }
+
+@media (max-width: 520px) {
+  .two-col { grid-template-columns: 1fr; }
+  .three-col { grid-template-columns: 1fr 1fr; }
+  .role-grid { grid-template-columns: repeat(2, 1fr); }
+}
+
+/* ── Select Cards ────────────────────────────── */
+.select-card {
+  background: var(--ink-3);
+  border: 1.5px solid var(--border);
+  border-radius: var(--r-md);
+  padding: 1rem 1.1rem;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  transition: all 0.18s;
+  font-size: 0.875rem;
+  color: var(--text-2);
+  font-weight: 500;
+}
+
+.select-card:hover { border-color: var(--gold); color: var(--text); }
+
+.select-card.selected {
+  border-color: var(--gold);
+  background: var(--gold-dim);
+  color: var(--gold);
+}
+
+.sc-icon { font-size: 1.2rem; flex-shrink: 0; }
+
+/* ── Education Table ─────────────────────────── */
+.edu-table-wrap { margin-top: var(--s3); }
+
+.edu-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.82rem;
+}
+
+.edu-table th {
+  background: var(--ink-4);
+  color: var(--text-3);
+  font-size: 0.65rem;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  padding: 0.65rem 0.75rem;
+  text-align: left;
+  border-bottom: 1px solid var(--border);
+}
+
+.edu-table td {
+  padding: 0.5rem 0.75rem;
+  border-bottom: 1px solid var(--border-soft);
+  vertical-align: middle;
+}
+
+.edu-table tr:last-child td { border-bottom: none; }
+
+.edu-table .rc-input {
+  padding: 0.45rem 0.65rem;
+  font-size: 0.82rem;
+  border-radius: var(--r-sm);
+  background: var(--ink-4);
+}
+
+.edu-table .rc-input:focus { box-shadow: none; border-color: var(--gold); }
+
+.btn-add-row {
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+  color: var(--gold);
+  font-size: 0.8rem;
+  font-weight: 600;
+  background: var(--gold-dim);
+  border: 1px dashed rgba(200,169,110,0.4);
+  border-radius: var(--r-sm);
+  padding: 0.5rem 1rem;
+  cursor: pointer;
+  margin-top: 0.75rem;
+  width: 100%;
+  justify-content: center;
+  transition: all 0.2s;
+}
+
+.btn-add-row:hover { background: rgba(200,169,110,0.2); }
+
+.btn-del-row {
+  background: transparent;
+  border: none;
+  color: var(--text-3);
+  font-size: 1rem;
+  cursor: pointer;
+  padding: 0.25rem;
+  border-radius: var(--r-sm);
+  transition: color 0.15s;
+  line-height: 1;
+}
+
+.btn-del-row:hover { color: var(--red); }
+
+/* ── Skills Autocomplete ─────────────────────── */
+.skill-search-wrap { position: relative; margin-bottom: var(--s3); }
+
+.skill-suggestions {
+  position: absolute;
+  top: calc(100% + 4px);
+  left: 0; right: 0;
+  background: var(--ink-4);
+  border: 1.5px solid var(--border);
+  border-radius: var(--r-md);
+  max-height: 200px;
+  overflow-y: auto;
+  z-index: 50;
+  box-shadow: var(--shadow-card);
+  display: none;
+}
+
+.skill-suggestions.open { display: block; }
+
+.suggestion-item {
+  padding: 0.6rem 1rem;
+  font-size: 0.85rem;
+  color: var(--text-2);
+  cursor: pointer;
+  transition: background 0.12s, color 0.12s;
+}
+
+.suggestion-item:hover {
+  background: var(--gold-dim);
+  color: var(--gold);
+}
+
+.suggestion-empty {
+  padding: 0.75rem 1rem;
+  font-size: 0.82rem;
+  color: var(--text-3);
+}
+
+.chips-container {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  min-height: 40px;
+}
+
+/* ── Lang / Hobby chips ──────────────────────── */
+.option-chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+
+/* ── Summary / Textarea ──────────────────────── */
+.rc-textarea {
+  width: 100%;
+  background: var(--ink-3);
+  border: 1.5px solid var(--border);
+  border-radius: var(--r-md);
+  color: var(--text);
+  font-family: var(--font-body);
+  font-size: 0.9rem;
+  padding: 0.85rem 1.1rem;
+  outline: none;
+  resize: vertical;
+  min-height: 80px;
+  line-height: 1.6;
+  transition: border-color 0.2s, box-shadow 0.2s;
+}
+
+.rc-textarea:focus {
+  border-color: var(--gold);
+  box-shadow: var(--shadow-glow);
+}
+
+.rc-textarea::placeholder { color: var(--text-3); }
+
+/* ── Hint text ───────────────────────────────── */
+.hint {
+  font-size: 0.72rem;
+  color: var(--text-3);
+  margin-top: -0.25rem;
+}
+
+/* ── Section card wrapper ────────────────────── */
+.section-card {
+  background: var(--ink-2);
+  border: 1px solid var(--border-soft);
+  border-radius: var(--r-lg);
+  padding: 1.5rem;
+  margin-bottom: 1.25rem;
+}
+
+.section-card-title {
+  font-size: 0.7rem;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--gold);
+  margin-bottom: 1rem;
+}

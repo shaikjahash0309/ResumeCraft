@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>ResumeCraft — Build Your Resume</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;0,700;1,400&family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="css/reset.css" />
+  <link rel="stylesheet" href="css/design-system.css" />
+  <link rel="stylesheet" href="css/layout.css" />
+  <link rel="stylesheet" href="css/steps.css" />
+  <link rel="stylesheet" href="css/resume-paper.css" />
+  <link rel="stylesheet" href="css/animations.css" />
+</head>
+<body>
+
+  <!-- ── LANDING SCREEN ─────────────────────────── -->
+  <div id="screen-landing" class="screen active">
+    <div class="landing-bg">
+      <div class="bg-grid"></div>
+      <div class="bg-orb orb-1"></div>
+      <div class="bg-orb orb-2"></div>
+    </div>
+    <nav class="nav">
+      <div class="nav-brand">
+        <span class="brand-mark">RC</span>
+        <span class="brand-name">ResumeCraft</span>
+      </div>
+      <span class="nav-tagline">ATS-Ready in 5 Minutes</span>
+    </nav>
+    <main class="landing-main">
+      <div class="landing-badge">Free · No Signup · No AI</div>
+      <h1 class="landing-title">
+        <span class="title-line">Your resume,</span>
+        <span class="title-line accent-line">assembled.</span>
+      </h1>
+      <p class="landing-sub">
+        Stop staring at a blank page. Select your details, and ResumeCraft structures
+        a professional, ATS-friendly resume — instantly.
+      </p>
+      <div class="landing-actions">
+        <button class="btn-cta" id="btn-start">
+          Build My Resume
+          <span class="btn-arrow">→</span>
+        </button>
+      </div>
+      <div class="landing-proof">
+        <span>✓ Real ATS format</span>
+        <span>✓ Download as PDF</span>
+      </div>
+    </main>
+  </div>
+
+  <!-- ── WIZARD SCREEN ──────────────────────────── -->
+  <div id="screen-wizard" class="screen">
+    <header class="wizard-header">
+      <div class="nav-brand">
+        <span class="brand-mark">RC</span>
+        <span class="brand-name">ResumeCraft</span>
+      </div>
+      <div class="progress-wrap">
+        <div class="progress-track">
+          <div class="progress-fill" id="progress-fill"></div>
+        </div>
+        <span class="progress-label" id="progress-label">Step 1 of 7</span>
+      </div>
+    </header>
+
+    <div class="wizard-body">
+      <!-- Steps injected here by JS -->
+      <div id="wizard-steps-container"></div>
+
+      <div class="wizard-nav">
+        <button class="btn-back" id="btn-back">← Back</button>
+        <button class="btn-next" id="btn-next">Continue →</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- ── RESULT SCREEN ──────────────────────────── -->
+  <div id="screen-result" class="screen">
+    <header class="wizard-header">
+      <div class="nav-brand">
+        <span class="brand-mark">RC</span>
+        <span class="brand-name">ResumeCraft</span>
+      </div>
+      <div class="result-actions">
+        <button class="btn-outline" id="btn-restart">← New Resume</button>
+        <button class="btn-cta sm" id="btn-download">⬇ Download PDF</button>
+      </div>
+    </header>
+    <div class="result-layout">
+      <aside class="result-sidebar">
+        <div class="result-success">
+          <div class="success-ring">✓</div>
+          <h2 class="result-title">Resume Ready</h2>
+          <p class="result-sub" id="result-name-display"></p>
+        </div>
+        <div class="result-meta" id="result-meta"></div>
+        <button class="btn-cta full" id="btn-download-2">⬇ Download PDF</button>
+        <button class="btn-outline full mt-sm" id="btn-restart-2">Start Over</button>
+      </aside>
+      <main class="result-preview">
+        <div id="resume-output"></div>
+      </main>
+    </div>
+  </div>
+
+  <!-- Scripts -->
+  <script src="js/data.js"></script>
+  <script src="js/validator.js"></script>
+  <script src="js/ruleEngine.js"></script>
+  <script src="js/resumeRenderer.js"></script>
+  <script src="js/steps.js"></script>
+  <script src="js/pdf.js"></script>
+  <script src="js/sheets.js"></script>
+  <script src="js/app.js"></script>
+</body>
+</html>

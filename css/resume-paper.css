@@ -1,0 +1,165 @@
+/* resume-paper.css */
+
+#resume-output {
+  width: 100%;
+  max-width: 700px;
+}
+
+.resume-paper {
+  background: #ffffff;
+  color: #1a1a1a;
+  font-family: 'Outfit', 'Segoe UI', sans-serif;
+  padding: 2.75rem 3rem;
+  border-radius: 10px;
+  box-shadow: 0 20px 80px rgba(0,0,0,0.5);
+  font-size: 9.5pt;
+  line-height: 1.55;
+  position: relative;
+}
+
+/* ── Header bar ──────────────────────────────── */
+.rp-header {
+  border-bottom: 2.5px solid var(--rp-accent, #1a1a1a);
+  padding-bottom: 1rem;
+  margin-bottom: 1rem;
+}
+
+.rp-name {
+  font-family: 'Cormorant Garamond', Georgia, serif;
+  font-size: 28pt;
+  font-weight: 700;
+  color: #0a0a0a;
+  letter-spacing: -0.02em;
+  line-height: 1.0;
+  margin-bottom: 0.2rem;
+}
+
+.rp-role {
+  font-size: 8.5pt;
+  font-weight: 600;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--rp-accent, #555);
+  margin-bottom: 0.6rem;
+}
+
+.rp-contact {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.3rem 1.25rem;
+  font-size: 8pt;
+  color: #555;
+}
+
+.rp-contact span { display: flex; align-items: center; gap: 0.25rem; }
+
+/* ── Section ─────────────────────────────────── */
+.rp-section { margin-bottom: 0.9rem; }
+
+.rp-section-title {
+  font-size: 7.5pt;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--rp-accent, #333);
+  margin-bottom: 0.25rem;
+}
+
+.rp-rule {
+  height: 1.5px;
+  background: var(--rp-accent, #ccc);
+  opacity: 0.4;
+  margin-bottom: 0.5rem;
+}
+
+/* ── Objective ───────────────────────────────── */
+.rp-objective {
+  font-size: 9pt;
+  color: #444;
+  font-style: italic;
+}
+
+/* ── Personal Details ────────────────────────── */
+.rp-personal-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0.15rem 1.5rem;
+  font-size: 8.5pt;
+}
+
+.rp-detail-row { display: flex; gap: 0.4rem; }
+.rp-detail-key { color: #888; min-width: 90px; flex-shrink: 0; }
+.rp-detail-val { color: #222; font-weight: 500; }
+
+/* ── Education ───────────────────────────────── */
+.rp-edu-list { display: flex; flex-direction: column; gap: 0.2rem; }
+.rp-edu-row {
+  display: flex;
+  gap: 0.4rem;
+  font-size: 8.5pt;
+}
+.rp-edu-num { color: var(--rp-accent, #555); font-weight: 600; min-width: 18px; flex-shrink: 0; }
+.rp-edu-deg { font-weight: 600; color: #111; }
+.rp-edu-meta { color: #666; }
+
+/* ── Skills ──────────────────────────────────── */
+.rp-skills-wrap {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.25rem 0.6rem;
+  font-size: 8.5pt;
+}
+
+.rp-skill {
+  background: #f4f4f8;
+  border: 1px solid #ddd;
+  border-left: 3px solid var(--rp-accent, #888);
+  padding: 0.15rem 0.5rem;
+  border-radius: 3px;
+  color: #333;
+  font-weight: 500;
+}
+
+/* ── Text block (achievements, hobbies) ──────── */
+.rp-text-block {
+  font-size: 8.5pt;
+  color: #333;
+  line-height: 1.6;
+}
+
+.rp-text-block ul { padding-left: 1rem; }
+.rp-text-block ul li { margin-bottom: 0.15rem; }
+
+/* ── Languages ───────────────────────────────── */
+.rp-lang-list { display: flex; flex-wrap: wrap; gap: 0.3rem 1rem; font-size: 8.5pt; color: #333; }
+
+/* ── Declaration ─────────────────────────────── */
+.rp-declaration { font-size: 8pt; color: #555; font-style: italic; }
+
+/* ── Signature block ─────────────────────────── */
+.rp-signature {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  margin-top: 1rem;
+  font-size: 8.5pt;
+  color: #444;
+}
+
+.rp-sig-left { display: flex; flex-direction: column; gap: 0.15rem; }
+.rp-sig-right { text-align: right; }
+.rp-sig-name { font-weight: 700; color: #111; font-size: 9pt; }
+
+/* ── Template accent colors ──────────────────── */
+.tmpl-modern   { --rp-accent: #2B4BCE; }
+.tmpl-minimal  { --rp-accent: #1C7C5A; }
+.tmpl-corporate{ --rp-accent: #5B3C99; }
+.tmpl-student  { --rp-accent: #B35C00; }
+
+/* ── Print ───────────────────────────────────── */
+@media print {
+  body { background: #fff; }
+  .screen { display: none; }
+  #resume-output { display: block !important; }
+  .resume-paper { box-shadow: none; border-radius: 0; padding: 1.5cm 1.5cm; }
+}

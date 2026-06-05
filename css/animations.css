@@ -1,0 +1,137 @@
+/* animations.css */
+
+@keyframes stepIn {
+  from { opacity: 0; transform: translateX(14px); }
+  to   { opacity: 1; transform: translateX(0); }
+}
+
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(20px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes popIn {
+  0%   { transform: scale(0.85); opacity: 0; }
+  70%  { transform: scale(1.04); }
+  100% { transform: scale(1); opacity: 1; }
+}
+
+/* Landing stagger */
+.landing-badge  { animation: fadeUp 0.5s 0.1s both; }
+.landing-title  { animation: fadeUp 0.55s 0.2s both; }
+.landing-sub    { animation: fadeUp 0.55s 0.35s both; }
+.landing-actions{ animation: fadeUp 0.5s 0.45s both; }
+.landing-proof  { animation: fadeUp 0.5s 0.55s both; }
+
+/* Result success ring */
+.success-ring { animation: popIn 0.5s 0.2s both; }
+
+/* Chip selection */
+.chip.active { animation: popIn 0.2s both; }
+
+/* Suggestion list */
+.skill-suggestions.open {
+  animation: fadeUp 0.18s both;
+}
+
+/* Table row add */
+@keyframes rowSlideIn {
+  from { opacity: 0; transform: translateY(-6px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+.edu-table tr.new-row td { animation: rowSlideIn 0.2s both; }
+
+/* Screen transition */
+.screen.entering {
+  animation: fadeUp 0.35s cubic-bezier(0.4, 0, 0.2, 1) both;
+}
+/* Education Table */
+
+.rp-edu-table{
+  width:100%;
+  border-collapse:collapse;
+  margin-top:10px;
+  font-size:14px;
+}
+
+.rp-edu-table th,
+.rp-edu-table td{
+  border:1px solid #333;
+  padding:8px;
+  text-align:left;
+}
+
+.rp-edu-table th{
+  background:#f3f3f3;
+  font-weight:600;
+}
+
+.rp-edu-table tbody tr:nth-child(even){
+  background:#fafafa;
+}
+.edu-table-wrap{
+  margin-top:1rem;
+  overflow-x:auto;
+}
+
+.edu-input-table{
+  width:100%;
+  border-collapse:collapse;
+  background:#fff;
+}
+
+.edu-input-table th{
+  background:#0f172a;
+  color:#fff;
+  padding:12px;
+  text-align:left;
+  border:1px solid #dcdcdc;
+}
+
+.edu-input-table td{
+  border:1px solid #dcdcdc;
+  padding:0;
+}
+
+.edu-input-table input{
+  width:100%;
+  border:none;
+  padding:12px;
+  border-radius:0;
+  background:transparent;
+}
+
+.edu-input-table input:focus{
+  outline:none;
+  background:#f8fafc;
+}
+#btn-add-higher {
+  background: rgba(200, 169, 110, 0.12);
+  border: 1px solid rgba(200, 169, 110, 0.35);
+  color: #c8a96e;
+
+  padding: 10px 16px;
+  border-radius: 8px;
+
+  font-size: 14px;
+  font-weight: 600;
+
+  cursor: pointer;
+  transition: all 0.25s ease;
+
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+
+  margin-top: 16px;
+}
+
+#btn-add-higher:hover {
+  background: rgba(200, 169, 110, 0.18);
+  border-color: #c8a96e;
+  transform: translateY(-1px);
+}
+
+#btn-add-higher:active {
+  transform: translateY(0);
+}

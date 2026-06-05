@@ -1,0 +1,229 @@
+/* design-system.css */
+
+/* ── Tokens ─────────────────────────────────── */
+:root {
+  /* Palette */
+  --ink:          #0A0A0F;
+  --ink-2:        #13131B;
+  --ink-3:        #1C1C28;
+  --ink-4:        #252535;
+  --border:       #2E2E44;
+  --border-soft:  rgba(255,255,255,0.06);
+  --text:         #F0EFF8;
+  --text-2:       #9997B8;
+  --text-3:       #5F5D80;
+
+  /* Accent — amber/cream */
+  --gold:         #C8A96E;
+  --gold-bright:  #E2C37A;
+  --gold-dim:     rgba(200, 169, 110, 0.15);
+  --gold-glow:    rgba(200, 169, 110, 0.25);
+
+  /* Accent 2 — slate blue */
+  --blue:         #7B8CDE;
+  --blue-dim:     rgba(123,140,222,0.12);
+
+  /* Status */
+  --green:        #5DC9A0;
+  --red:          #E07070;
+
+  /* Radii */
+  --r-sm:  6px;
+  --r-md:  12px;
+  --r-lg:  20px;
+  --r-xl:  28px;
+
+  /* Shadows */
+  --shadow-card:  0 8px 48px rgba(0,0,0,0.55);
+  --shadow-glow:  0 0 0 3px var(--gold-dim);
+
+  /* Fonts */
+  --font-display: 'Cormorant Garamond', Georgia, serif;
+  --font-body:    'Outfit', sans-serif;
+
+  /* Spacing scale */
+  --s1: 0.25rem;
+  --s2: 0.5rem;
+  --s3: 0.75rem;
+  --s4: 1rem;
+  --s5: 1.5rem;
+  --s6: 2rem;
+  --s7: 3rem;
+  --s8: 4rem;
+}
+
+/* ── Base ────────────────────────────────────── */
+body {
+  background: var(--ink);
+  color: var(--text);
+  font-family: var(--font-body);
+  font-size: 15px;
+  line-height: 1.65;
+  min-height: 100vh;
+}
+
+/* ── Typography ──────────────────────────────── */
+.display-xl {
+  font-family: var(--font-display);
+  font-size: clamp(3.2rem, 8vw, 6.5rem);
+  font-weight: 700;
+  line-height: 1.0;
+  letter-spacing: -0.02em;
+}
+
+.display-md {
+  font-family: var(--font-display);
+  font-size: clamp(1.8rem, 4vw, 2.8rem);
+  font-weight: 600;
+  line-height: 1.15;
+}
+
+.label-caps {
+  font-size: 0.7rem;
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--text-3);
+}
+
+/* ── Buttons ─────────────────────────────────── */
+.btn-cta {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--s2);
+  background: var(--gold);
+  color: var(--ink);
+  font-family: var(--font-body);
+  font-weight: 700;
+  font-size: 0.95rem;
+  letter-spacing: 0.02em;
+  padding: 0.9rem 2rem;
+  border-radius: var(--r-md);
+  border: none;
+  cursor: pointer;
+  transition: background 0.2s, transform 0.15s, box-shadow 0.2s;
+  position: relative;
+  overflow: hidden;
+}
+
+.btn-cta::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: rgba(255,255,255,0);
+  transition: background 0.2s;
+}
+
+.btn-cta:hover {
+  background: var(--gold-bright);
+  transform: translateY(-2px);
+  box-shadow: 0 8px 32px var(--gold-glow);
+}
+
+.btn-cta:hover::after { background: rgba(255,255,255,0.06); }
+
+.btn-cta:active { transform: translateY(0); }
+
+.btn-cta.sm { padding: 0.65rem 1.4rem; font-size: 0.875rem; }
+.btn-cta.full { width: 100%; justify-content: center; }
+
+.btn-arrow { transition: transform 0.2s; }
+.btn-cta:hover .btn-arrow { transform: translateX(4px); }
+
+.btn-outline {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--s2);
+  background: transparent;
+  color: var(--text-2);
+  font-family: var(--font-body);
+  font-weight: 500;
+  font-size: 0.875rem;
+  padding: 0.65rem 1.25rem;
+  border-radius: var(--r-md);
+  border: 1.5px solid var(--border);
+  cursor: pointer;
+  transition: border-color 0.2s, color 0.2s, background 0.2s;
+}
+
+.btn-outline:hover {
+  border-color: var(--gold);
+  color: var(--gold);
+  background: var(--gold-dim);
+}
+
+.btn-outline.full { width: 100%; justify-content: center; }
+.mt-sm { margin-top: var(--s3); }
+
+/* ── Inputs ──────────────────────────────────── */
+.rc-input {
+  width: 100%;
+  background: var(--ink-3);
+  border: 1.5px solid var(--border);
+  border-radius: var(--r-md);
+  color: var(--text);
+  font-family: var(--font-body);
+  font-size: 0.95rem;
+  padding: 0.8rem 1.1rem;
+  outline: none;
+  transition: border-color 0.2s, box-shadow 0.2s, background 0.2s;
+}
+
+.rc-input::placeholder { color: var(--text-3); }
+
+.rc-input:focus {
+  border-color: var(--gold);
+  background: var(--ink-4);
+  box-shadow: var(--shadow-glow);
+}
+
+/* ── Field ───────────────────────────────────── */
+.field { display: flex; flex-direction: column; gap: var(--s2); margin-bottom: var(--s5); }
+.field-label {
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--text-3);
+}
+
+/* ── Chips / Pills ───────────────────────────── */
+.chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  background: var(--ink-3);
+  border: 1.5px solid var(--border);
+  border-radius: 999px;
+  color: var(--text-2);
+  font-family: var(--font-body);
+  font-size: 0.8rem;
+  font-weight: 500;
+  padding: 0.35rem 0.85rem;
+  cursor: pointer;
+  transition: all 0.15s;
+  user-select: none;
+}
+
+.chip:hover { border-color: var(--gold); color: var(--text); }
+.chip.active {
+  background: var(--gold-dim);
+  border-color: var(--gold);
+  color: var(--gold);
+}
+
+.chip-remove {
+  font-size: 0.7rem;
+  opacity: 0.6;
+  cursor: pointer;
+  margin-left: 2px;
+  transition: opacity 0.15s;
+}
+.chip-remove:hover { opacity: 1; }
+
+/* ── Divider ─────────────────────────────────── */
+.divider {
+  height: 1px;
+  background: var(--border-soft);
+  margin: var(--s5) 0;
+}
