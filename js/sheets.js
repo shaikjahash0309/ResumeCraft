@@ -1,37 +1,25 @@
-// sheets.js — Google Sheets Connector
-// Replace ENDPOINT with your Google Apps Script Web App URL.
-//
-// ── Google Apps Script to paste at script.google.com ─────────────────
-// function doPost(e) {
-//   const sheet = SpreadsheetApp.getActiveSpreadsheet().getActiveSheet();
-//   const d = JSON.parse(e.postData.contents);
-//   if (sheet.getLastRow() === 0)
-//     sheet.appendRow(["Name","Email","Phone","Timestamp"]);
-//   sheet.appendRow([d.name, d.email, d.phone, d.timestamp]);
-//   return ContentService
-//     .createTextOutput(JSON.stringify({status:"ok"}))
-//     .setMimeType(ContentService.MimeType.JSON);
-// }
-// ─────────────────────────────────────────────────────────────────────
-
 const SheetsConnector = {
- ENDPOINT: "https://script.google.com/macros/s/AKfycbz9bux-ZSBnIOqKlLDVuqlCUgywPZ_uE4l-lCQZm9QEN0a4EcHCtzaUUaHnYyWsDaWLTw/exec", // Paste your deployed Apps Script URL here
+  ENDPOINT: "https://script.google.com/macros/s/AKfycbz9bux-ZSBnIOqKlLDVuqlCUgywPZ_uE4l-lCQZm9QEN0a4EcHCtzaUUaHnYyWsDaWLTw/exec",
 
   async send(data) {
-    if (!this.ENDPOINT) return;
     try {
-      await fetch(this.ENDPOINT, {
+      const formData = new URLSearchParams();
+
+      formData.append("name", data.name || "");
+      formData.append("email", data.email || "");
+      formData.append("phone", data.phone || "");
+      formData.append("timestamp", new Date().toISOString());
+
+      const res = await fetch(this.ENDPOINT, {
         method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({
-          name:      data.name,
-          email:     data.email,
-          phone:     data.phone,
-          timestamp: new Date().toISOString(),
-        }),
+        body: formData
       });
+
+      const result = await res.text();
+      console.log("Sheet response:", result);
+
     } catch (e) {
-      // Non-blocking — silently ignore
+      console.error("Send failed:", e);
     }
-  },
+  }
 };
