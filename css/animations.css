@@ -135,3 +135,63 @@
 #btn-add-higher:active {
   transform: translateY(0);
 }
+/* 🔥 FORCE A4 LAYOUT */
+.pdf-mode {
+  background: white !important;
+}
+
+/* Your resume container */
+.pdf-mode #resume-output {
+  width: 794px !important;   /* A4 width */
+  min-width: 794px !important;
+  max-width: 794px !important;
+
+  margin: 0 auto !important;
+
+  transform: none !important;
+  zoom: 1 !important;
+}
+
+/* Prevent mobile flex breaking */
+.pdf-mode * {
+  -webkit-text-size-adjust: 100%;
+  text-size-adjust: 100%;
+}
+
+/* Fix flex wrapping issues */
+.pdf-mode .resume-section {
+  break-inside: avoid;
+  page-break-inside: avoid;
+}
+
+/* Prevent weird mobile scaling */
+@media screen and (max-width: 768px) {
+  .pdf-mode #resume-output {
+    width: 794px !important;
+  }
+}
+.pdf-mode {
+  font-size: 16px !important;
+}
+
+.pdf-mode * {
+  font-size-adjust: none !important;
+}
+.pdf-mode .flex {
+  flex-wrap: nowrap !important;
+}
+
+.pdf-mode .grid {
+  grid-template-columns: repeat(1, 1fr) !important;
+}
+.pdf-mode h1,
+.pdf-mode h2,
+.pdf-mode h3 {
+  break-after: avoid;
+  page-break-after: avoid;
+}
+
+.pdf-mode .section {
+  break-inside: avoid;
+  page-break-inside: avoid;
+}
