@@ -15,7 +15,7 @@
 // ─────────────────────────────────────────────────────────────────────
 
 const SheetsConnector = {
-  ENDPOINT: "https://script.google.com/macros/s/AKfycbzToWoHIwo5fUgYs10rP-qmWQP4S_jsBt-koFHZaFwytnEUfGFRFoww54rlWvsJUFVTzg/exec", // Paste your deployed Apps Script URL here
+  ENDPOINT: "https://script.google.com/macros/s/AKfycbz3fwvCWG5H7HfpY-VPfKtHxawECRmd69B8Bfe7Nq4phKNckJ-q0KWNUpd8vVlT69ZKOQ/exec", // Paste your deployed Apps Script URL here
 
   async send(data) {
     if (!this.ENDPOINT) return;
