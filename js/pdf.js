@@ -1,5 +1,3 @@
-// pdf.js — PDF Export (Improved Version)
-
 const PDFExporter = {
   async export(elementId, fileName) {
     const el = document.getElementById(elementId);
@@ -10,11 +8,15 @@ const PDFExporter = {
       await this._loadScript("https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js");
       await this._loadScript("https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js");
 
+      // Wait a bit for layout stability (VERY IMPORTANT for resumes)
+      await new Promise(r => setTimeout(r, 300));
+
       const canvas = await html2canvas(el, {
         scale: 2,
         useCORS: true,
         backgroundColor: "#ffffff",
         logging: false,
+        scrollY: 0
       });
 
       const { jsPDF } = window.jspdf;
@@ -23,23 +25,22 @@ const PDFExporter = {
       const pdfWidth = pdf.internal.pageSize.getWidth();
       const pdfHeight = pdf.internal.pageSize.getHeight();
 
-      // Convert canvas dimensions to PDF scale
       const canvasWidth = canvas.width;
       const canvasHeight = canvas.height;
 
       const ratio = pdfWidth / canvasWidth;
-      const pageCanvasHeight = pdfHeight / ratio;
+      const pageHeightPx = pdfHeight / ratio;
 
+      let heightLeft = canvasHeight;
       let position = 0;
       let pageIndex = 0;
 
-      while (position < canvasHeight) {
-        // Create temporary canvas for each page slice
+      while (heightLeft > 0) {
         const pageCanvas = document.createElement("canvas");
         const pageCtx = pageCanvas.getContext("2d");
 
         pageCanvas.width = canvasWidth;
-        pageCanvas.height = Math.min(pageCanvasHeight, canvasHeight - position);
+        pageCanvas.height = Math.min(pageHeightPx, heightLeft);
 
         pageCtx.drawImage(
           canvas,
@@ -66,7 +67,8 @@ const PDFExporter = {
           pageCanvas.height * ratio
         );
 
-        position += pageCanvasHeight;
+        position += pageCanvas.height;
+        heightLeft -= pageCanvas.height;
         pageIndex++;
       }
 
@@ -74,10 +76,10 @@ const PDFExporter = {
         .replace(/\s+/g, "_")
         .replace(/[^a-zA-Z0-9_\-]/g, "");
 
-      pdf.save(`${safe}_resume.pdf`);
+      pdf.save(`${safe}.pdf`);
     } catch (err) {
       console.error("[ResumeCraft] PDF error:", err);
-      alert("PDF generation failed. Please try printing (Ctrl+P).");
+      alert("PDF generation failed. Please try again or use Print (Ctrl+P).");
     }
   },
 
@@ -91,8 +93,8 @@ const PDFExporter = {
       const script = document.createElement("script");
       script.src = src;
       script.onload = resolve;
-      script.onerror = resolve; // fail gracefully
+      script.onerror = resolve;
       document.head.appendChild(script);
     });
-  },
+  }
 };
