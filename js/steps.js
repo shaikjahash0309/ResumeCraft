@@ -516,13 +516,30 @@ const Steps = {
           ✓ Declaration with your name<br/>
           ✓ Signature block with today's date
         </div>
-      </div>
+      <div style="margin-top:20px; display:flex; justify-content:center;">
+  <button id="btn-generate" class="btn-primary">
+    Generate Resume
+  </button>
+</div></div>
     </div>`;
   },
 
-  bindStep6(_state) {
-    // No interactive binds needed for confirmation step
-  },
+ bindStep6(state) {
+  const btn = document.getElementById("btn-generate");
+
+  if (btn) {
+    btn.addEventListener("click", () => {
+      SheetsConnector.send({
+        name: state.name,
+        email: state.email,
+        phone: state.phone,
+        timestamp: new Date().toISOString()
+      });
+
+      console.log("Sending to Sheets:", state);
+    });
+  }
+}
 };
 
 // Utility used by steps
